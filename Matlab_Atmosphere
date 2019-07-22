@@ -1,0 +1,32 @@
+
+
+
+% Request (input) from the user to enter SI or imperial units. 
+	prompt = 'Please enter 0 for SI units or 1 for imperial units'
+	x =  input(prompt)
+
+% Test to see if the unit is imperial
+	if x == 0 
+		alt_prompt = 'Please enter a desired altitude in feet'
+		p_alt= input(alt_prompt)
+% Request altitude from the user (make sure to ask for correct units)
+	        if p_alt =< 36000
+% Calculate for temp, pressure and density at desired altitude
+				p_alt=p_sl*[T_alt/T_sl]^5.256;
+				rho_alt=rho_sl*(T_sl/T_tp)^4.256;
+		else 36000 < p_alt < 75000
+				p_alt=p_sl*[(p_tp/p_sl)*exp(-(-g/R*T_TP(h-h_tp))]
+				rho_alt=rho_sl*[(p_alt/p_sl)*(T_sl/T_tp)];
+% If unit is 1 -> metric unit 
+	if x== 1
+		alt_prompt = 'Please enter a desired altitude in feet'
+		p_alt= input(alt_prompt)
+% Request altitude from the user (make sure to ask for correct units)
+	        if p_alt =< 11000
+			p_alt=p_sl*[T_alt/T_sl]^5.256
+			rho_alt=rho_sl*(T_sl/T_tp)^4.256;
+		else 11000 < p_alt < 23000
+			p_alt=p_sl*[(p_tp/p_sl)*exp(-(-g/R*T_TP(h-h_tp))]
+			rho_alt=rho_sl*[(p_alt/p_sl)*(T_sl/T_tp)];
+	else 
+		print('Please enter a number between 0 and 1')
